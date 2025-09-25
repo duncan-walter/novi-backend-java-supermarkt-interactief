@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
@@ -22,23 +23,9 @@ public class Main {
         caldiProjectCatalogue.add(new Product("2-laags toiletpapier", 10, 100));
         caldiProjectCatalogue.add(new Product("Croissant", 0.25, 100));
 
-        SuperMarket albertHeijn = new SuperMarket(
-                new Product("Frikandelbroodje", 0.99, 10),
-                new Product("Kiwi", 2, 50),
-                new Product("0,5-laags toiletpapier", 5, 100),
-                new Product("Cheddar", 2.5, 10)
-        );
-        Customer customer = new Customer("Duncan");
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Which product do you want to buy?");
-        String targetProduct = scanner.nextLine();
-
-        System.out.println("How many do you want to buy?");
-        int targetQuantity = scanner.nextInt();
-        scanner.nextLine(); // Consumeer de overgebleven new-line
-
-        customer.goToSuperMarket(albertHeijn);
-        customer.buyItem(targetProduct, targetQuantity);
+        Map<String, SuperMarket> superMarkets = new HashMap<>();
+        superMarkets.put("halbert ein", new SuperMarket("Halbert Ein", halbertEinProductCatalogue));
+        superMarkets.put("dumbo", new SuperMarket("Dumbo", dumboProjectCatalogue));
+        superMarkets.put("caldi", new SuperMarket("Caldi", caldiProjectCatalogue));;
     }
 }
