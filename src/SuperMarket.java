@@ -33,7 +33,8 @@ public class SuperMarket {
                 System.out.printf("%d %s(s) were restocked! Current stock: %d%n", amount, product.name, product.amount);
                 return;
             }
-            System.out.printf("Could not restock %s because it does not exist in the product catalogue of %s.%n", productName, name);
         }
+
+        System.out.printf("Could not restock %s because it does not exist in the product catalogue of %s.%n", productName, name);
     }
 }
