@@ -18,7 +18,7 @@ public class SuperMarket {
     // De "s" (string), "d" (decimal integer) of "f" (float) duiden het type van de waarde in de placeholder aan.
     private void buyItem(Product product, int amount) {
         if (amount <= product.amount) {
-            float totalPrice = amount * product.price;
+            double totalPrice = amount * product.price;
             System.out.printf("You bought %d %s(s) for %f euro%n", amount, product.name, totalPrice);
             product.amount -= amount;
         } else {
