@@ -24,4 +24,16 @@ public class SuperMarket {
             System.out.printf("You cannot buy %1$d %2$s(s), we only have %3$d %2$s(s) in stock%n", amount, product.name, product.amount);
         }
     }
+
+    public void restockItem(String productName, int amount) {
+        for (int i = 0; i < productCatalogue.size(); i++) {
+            Product product = productCatalogue.get(i);
+            if (product.name.equalsIgnoreCase(productName)) {
+                product.amount += amount;
+                System.out.printf("%d %s(s) were restocked! Current stock: %d", amount, product.name, product.amount);
+                return;
+            }
+            System.out.printf("Could not restock %s because it does not exist in the product catalogue of %s.", productName, name);
+        }
+    }
 }

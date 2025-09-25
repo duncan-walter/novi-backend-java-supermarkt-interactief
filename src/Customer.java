@@ -22,7 +22,7 @@ public class Customer {
                 superMarket.buyItem(product, amount);
                 return;
             }
-            System.out.printf("%s is currently not available in %s", productName, name);
+            System.out.printf("%s is currently not available in %s, try buying another product.", productName, superMarket.name);
         }
     }
 }
