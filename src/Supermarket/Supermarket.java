@@ -28,6 +28,10 @@ public class Supermarket {
     }
 
     public void restockItem(String productName, int amount) {
+        if (amount < 1) {
+            System.out.println("Restock amount must be greater than 0!");
+        }
+
         for (int i = 0; i < productCatalogue.size(); i++) {
             Product product = productCatalogue.get(i);
             if (product.name.equalsIgnoreCase(productName)) {
