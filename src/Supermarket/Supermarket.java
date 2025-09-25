@@ -3,11 +3,11 @@ package Supermarket;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SuperMarket {
+public class Supermarket {
     public String name;
     public List<Product> productCatalogue;
 
-    public SuperMarket(String name, List<Product> productCatalogue) {
+    public Supermarket(String name, List<Product> productCatalogue) {
         this.name = name;
         this.productCatalogue = productCatalogue == null ? new ArrayList<>() : productCatalogue;
     }

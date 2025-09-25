@@ -2,13 +2,13 @@ package Supermarket;
 
 public class Customer {
     public String name;
-    public SuperMarket superMarket;
+    public Supermarket superMarket;
 
     public Customer(String name) {
         this.name = name;
     }
 
-    public void goToSuperMarket(SuperMarket superMarket) {
+    public void goToSuperMarket(Supermarket superMarket) {
         this.superMarket = superMarket;
         System.out.printf("%s entered %s.%n", name, superMarket.name);
     }
@@ -27,6 +27,6 @@ public class Customer {
             }
         }
 
-        System.out.printf("%s is currently not available in %s, try buying another product.%n", productName, superMarket.name);
+        System.out.printf("%s can't find any '%s' among the shelves at %s.%n", name, productName, superMarket.name);
     }
 }
