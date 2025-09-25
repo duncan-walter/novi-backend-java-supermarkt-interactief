@@ -1,14 +1,13 @@
-public class SuperMarket {
-    public Product bread;
-    public Product fruit;
-    public Product toiletPaper;
-    public Product cheese;
+import java.util.ArrayList;
+import java.util.List;
 
-    public SuperMarket(Product bread, Product fruit, Product toiletPaper, Product cheese) {
-        this.bread = bread == null ? getFakeProduct() : bread;
-        this.fruit = fruit == null ? getFakeProduct() : fruit;
-        this.toiletPaper = toiletPaper == null ? getFakeProduct() : toiletPaper;
-        this.cheese = cheese == null ? getFakeProduct() : cheese;
+public class SuperMarket {
+    public String name;
+    public List<Product> productCatalogue;
+
+    public SuperMarket(String name, List<Product> productCatalogue) {
+        this.name = name;
+        this.productCatalogue = productCatalogue == null ? new ArrayList<>() : productCatalogue;
     }
 
     // In deze methode maak ik gebruik van de printf methode. Dit zorgt ervoor dat ik niet de plus notatie hoef te gebruiken.
