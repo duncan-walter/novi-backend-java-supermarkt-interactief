@@ -27,6 +27,6 @@ public class Customer {
             }
         }
 
-        System.out.printf("%s can't find any '%s' among the shelves at %s.%n", name, productName, supermarket.name);
+        System.out.printf("%s couldn't find any '%s' among the shelves at %s.%n", name, productName, supermarket.name);
     }
 }

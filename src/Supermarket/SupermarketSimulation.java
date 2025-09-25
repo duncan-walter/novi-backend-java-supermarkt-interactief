@@ -3,9 +3,10 @@ package Supermarket;
 import java.util.*;
 
 public class SupermarketSimulation {
-    private final List<Product> halbertEinProductCatalogue = new ArrayList<>();
-    private final List<Product> dumboProductCatalogue = new ArrayList<>();
-    private final List<Product> caldiProductCatalogue = new ArrayList<>();
+    private final static int PRODUCTS_PER_SUPERMARKET = 4;
+    private final static String[] SUPERMARKET_NAMES = {"Halbert Ein", "Dumbo", "Wally"};
+
+    private final List<Product> availableProducts = new ArrayList<>();
     private final Map<String, Supermarket> supermarkets = new HashMap<>();
     private final Customer customer = new Customer("Duncan");
     private final Scanner scanner = new Scanner(System.in);
@@ -73,26 +74,29 @@ public class SupermarketSimulation {
     }
 
     private void populateProducts() {
-        halbertEinProductCatalogue.add(new Product("Frikandelbroodje", 0.99, 10));
-        halbertEinProductCatalogue.add(new Product("Kiwi", 2, 50));
-        halbertEinProductCatalogue.add(new Product("0,5-laags toiletpapier", 5, 100));
-        halbertEinProductCatalogue.add(new Product("Cheddar", 2.5, 10));
-
-        dumboProductCatalogue.add(new Product("Melk", 1, 100));
-        dumboProductCatalogue.add(new Product("Banaan", 0.5, 500));
-        dumboProductCatalogue.add(new Product("1-laags toiletpapier", 10, 10));
-        dumboProductCatalogue.add(new Product("Oude kaas", 5, 5));
-
-        caldiProductCatalogue.add(new Product("Pepernoten", 2, 100));
-        caldiProductCatalogue.add(new Product("Doperwten", 2, 50));
-        caldiProductCatalogue.add(new Product("2-laags toiletpapier", 10, 100));
-        caldiProductCatalogue.add(new Product("Croissant", 0.25, 100));
+        availableProducts.add(new Product("Frikandelbroodje", 0.99, 10));
+        availableProducts.add(new Product("Kiwi", 2, 50));
+        availableProducts.add(new Product("0,5-laags toiletpapier", 5, 100));
+        availableProducts.add(new Product("Cheddar", 2.5, 10));
+        availableProducts.add(new Product("Melk", 1, 100));
+        availableProducts.add(new Product("Banaan", 0.5, 500));
+        availableProducts.add(new Product("1-laags toiletpapier", 10, 10));
+        availableProducts.add(new Product("Oude kaas", 5, 5));
+        availableProducts.add(new Product("Pepernoten", 2, 100));
+        availableProducts.add(new Product("Doperwten", 2, 50));
+        availableProducts.add(new Product("2-laags toiletpapier", 10, 100));
+        availableProducts.add(new Product("Croissant", 0.25, 100));
     }
 
     private void populateSupermarkets() {
-        supermarkets.put("halbert ein", new Supermarket("Halbert Ein", halbertEinProductCatalogue));
-        supermarkets.put("dumbo", new Supermarket("Dumbo", dumboProductCatalogue));
-        supermarkets.put("caldi", new Supermarket("Caldi", caldiProductCatalogue));
+        for (String supermarketName : SUPERMARKET_NAMES) {
+            int randomIndex = (int)(Math.random() * (availableProducts.size() - PRODUCTS_PER_SUPERMARKET + 1));
+            Supermarket supermarket = new Supermarket(
+                    supermarketName,
+                    availableProducts.subList(randomIndex, randomIndex + PRODUCTS_PER_SUPERMARKET)
+            );
+            supermarkets.put(supermarketName.toLowerCase(), supermarket);
+        }
     }
 
     private Supermarket getUserSupermarketChoice(String message) {
