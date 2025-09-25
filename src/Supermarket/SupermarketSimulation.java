@@ -4,9 +4,9 @@ import java.util.*;
 
 public class SupermarketSimulation {
     private final List<Product> halbertEinProductCatalogue = new ArrayList<>();
-    private final List<Product> dumboProjectCatalogue = new ArrayList<>();
-    private final List<Product> caldiProjectCatalogue = new ArrayList<>();
-    private final Map<String, Supermarket> superMarkets = new HashMap<>();
+    private final List<Product> dumboProductCatalogue = new ArrayList<>();
+    private final List<Product> caldiProductCatalogue = new ArrayList<>();
+    private final Map<String, Supermarket> supermarkets = new HashMap<>();
     private final Customer customer = new Customer("Duncan");
     private final Scanner scanner = new Scanner(System.in);
 
@@ -16,7 +16,6 @@ public class SupermarketSimulation {
     }
 
     public void simulate() {
-
         while (true) {
             System.out.println("What would you like to do?");
             System.out.println("1 - Visit a supermarket");
@@ -33,12 +32,12 @@ public class SupermarketSimulation {
 
                     break;
                 case "2":
-                    if (customer.superMarket == null) {
+                    if (customer.supermarket == null) {
                         System.out.println("Please visit a supermarket first before trying to buy a product!");
                         break;
                     }
 
-                    System.out.printf("What product would you like to buy from %s?%n", customer.superMarket.name);
+                    System.out.printf("What product would you like to buy from %s?%n", customer.supermarket.name);
                     String targetProduct = scanner.nextLine();
 
                     System.out.printf("How many %s(s) would you like to buy?%n", targetProduct);
@@ -79,21 +78,21 @@ public class SupermarketSimulation {
         halbertEinProductCatalogue.add(new Product("0,5-laags toiletpapier", 5, 100));
         halbertEinProductCatalogue.add(new Product("Cheddar", 2.5, 10));
 
-        dumboProjectCatalogue.add(new Product("Melk", 1, 100));
-        dumboProjectCatalogue.add(new Product("Banaan", 0.5, 500));
-        dumboProjectCatalogue.add(new Product("1-laags toiletpapier", 10, 10));
-        dumboProjectCatalogue.add(new Product("Oude kaas", 5, 5));
+        dumboProductCatalogue.add(new Product("Melk", 1, 100));
+        dumboProductCatalogue.add(new Product("Banaan", 0.5, 500));
+        dumboProductCatalogue.add(new Product("1-laags toiletpapier", 10, 10));
+        dumboProductCatalogue.add(new Product("Oude kaas", 5, 5));
 
-        caldiProjectCatalogue.add(new Product("Pepernoten", 2, 100));
-        caldiProjectCatalogue.add(new Product("Doperwten", 2, 50));
-        caldiProjectCatalogue.add(new Product("2-laags toiletpapier", 10, 100));
-        caldiProjectCatalogue.add(new Product("Croissant", 0.25, 100));
+        caldiProductCatalogue.add(new Product("Pepernoten", 2, 100));
+        caldiProductCatalogue.add(new Product("Doperwten", 2, 50));
+        caldiProductCatalogue.add(new Product("2-laags toiletpapier", 10, 100));
+        caldiProductCatalogue.add(new Product("Croissant", 0.25, 100));
     }
 
     private void populateSupermarkets() {
-        superMarkets.put("halbert ein", new Supermarket("Halbert Ein", halbertEinProductCatalogue));
-        superMarkets.put("dumbo", new Supermarket("Dumbo", dumboProjectCatalogue));
-        superMarkets.put("caldi", new Supermarket("Caldi", caldiProjectCatalogue));
+        supermarkets.put("halbert ein", new Supermarket("Halbert Ein", halbertEinProductCatalogue));
+        supermarkets.put("dumbo", new Supermarket("Dumbo", dumboProductCatalogue));
+        supermarkets.put("caldi", new Supermarket("Caldi", caldiProductCatalogue));
     }
 
     private Supermarket getUserSupermarketChoice(String message) {
@@ -101,12 +100,12 @@ public class SupermarketSimulation {
             System.out.println(message);
             System.out.println("Typ one of the following:");
 
-            for (Supermarket superMarket : superMarkets.values()) {
+            for (Supermarket superMarket : supermarkets.values()) {
                 System.out.printf("- %s%n", superMarket.name);
             }
 
             String superMarketChoice = scanner.nextLine().toLowerCase();
-            Supermarket superMarket = superMarkets.get(superMarketChoice);
+            Supermarket superMarket = supermarkets.get(superMarketChoice);
 
             if (superMarket == null) {
                 System.out.printf("%s does not exist! Please check your spelling and typ in a valid supermarket name.%n", superMarketChoice);
