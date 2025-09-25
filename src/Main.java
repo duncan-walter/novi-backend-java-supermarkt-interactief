@@ -1,3 +1,5 @@
+import Supermarket.*;
+
 import java.util.*;
 
 public class Main {
@@ -56,11 +58,15 @@ public class Main {
                     scanner.nextLine();
 
                     superMarketToRestock.restockItem(itemToRestock, restockAmount);
+
                     break;
                 case "4":
-                    break;
+                    System.out.println("Farewell!");
+
+                    return;
                 default:
                     System.out.printf("%s is not a valid option! Please pick a valid option.%n", userMenuChoice);
+
                     break;
             }
         }

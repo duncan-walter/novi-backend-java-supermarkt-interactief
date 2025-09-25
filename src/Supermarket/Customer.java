@@ -1,3 +1,5 @@
+package Supermarket;
+
 public class Customer {
     public String name;
     public SuperMarket superMarket;
