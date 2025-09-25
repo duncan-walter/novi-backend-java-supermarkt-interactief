@@ -8,6 +8,7 @@ public class Customer {
 
     public void goToSuperMarket(SuperMarket superMarket) {
         this.superMarket = superMarket;
+        System.out.printf("%s entered %s.", name, superMarket.name);
     }
 
     public void buyItem(String productName, int amount) {

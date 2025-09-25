@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -26,6 +23,50 @@ public class Main {
         Map<String, SuperMarket> superMarkets = new HashMap<>();
         superMarkets.put("halbert ein", new SuperMarket("Halbert Ein", halbertEinProductCatalogue));
         superMarkets.put("dumbo", new SuperMarket("Dumbo", dumboProjectCatalogue));
-        superMarkets.put("caldi", new SuperMarket("Caldi", caldiProjectCatalogue));;
+        superMarkets.put("caldi", new SuperMarket("Caldi", caldiProjectCatalogue));
+
+        var scanner = new Scanner(System.in);
+        var customer = new Customer("Duncan");
+
+        while (true) {
+            System.out.println("\nWhat would you like to do?");
+            System.out.println("1 - Visit a supermarket");
+            System.out.println("2 - Buy a product");
+            System.out.println("3 - Restock a product");
+            System.out.println("4 - Exit");
+
+            int userMenuChoice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (userMenuChoice) {
+                case 1:
+                    System.out.println("Which supermarket would you like to visit?");
+                    System.out.println("Typ one of the following:");
+
+                    for (SuperMarket superMarket : superMarkets.values()) {
+                        System.out.printf("- %s%n", superMarket.name);
+                    }
+
+                    String superMarketChoice = scanner.nextLine().toLowerCase();
+                    SuperMarket superMarket = superMarkets.get(superMarketChoice);
+
+                    if (superMarket == null) {
+                        System.out.printf("%s does not exist! Please check your spelling and typ in a valid supermarket name.", superMarketChoice);
+                    } else {
+                        customer.goToSuperMarket(superMarket);
+                    }
+
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                default:
+                    System.out.printf("%s is not a valid option! Please pick a valid option.", userMenuChoice);
+                    break;
+            }
+        }
     }
 }
