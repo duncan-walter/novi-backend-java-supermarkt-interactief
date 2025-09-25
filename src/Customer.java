@@ -8,12 +8,12 @@ public class Customer {
 
     public void goToSuperMarket(SuperMarket superMarket) {
         this.superMarket = superMarket;
-        System.out.printf("%s entered %s.", name, superMarket.name);
+        System.out.printf("%s entered %s.%n", name, superMarket.name);
     }
 
     public void buyItem(String productName, int amount) {
         if (superMarket == null) {
-            System.out.printf("%s is currently not in a supermarket, please visit a supermarket first.", name);
+            System.out.printf("%s is currently not in a supermarket, please visit a supermarket first.%n", name);
             return;
         }
 
@@ -23,7 +23,8 @@ public class Customer {
                 superMarket.buyItem(product, amount);
                 return;
             }
-            System.out.printf("%s is currently not available in %s, try buying another product.", productName, superMarket.name);
         }
+
+        System.out.printf("%s is currently not available in %s, try buying another product.%n", productName, superMarket.name);
     }
 }

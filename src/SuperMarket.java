@@ -18,7 +18,7 @@ public class SuperMarket {
     public void buyItem(Product product, int amount) {
         if (amount <= product.amount) {
             double totalPrice = amount * product.price;
-            System.out.printf("You bought %d %s(s) for %f euro%n", amount, product.name, totalPrice);
+            System.out.printf("You bought %d %s(s) for %f euro!%n", amount, product.name, totalPrice);
             product.amount -= amount;
         } else {
             System.out.printf("You cannot buy %1$d %2$s(s), we only have %3$d %2$s(s) in stock%n", amount, product.name, product.amount);
@@ -30,10 +30,10 @@ public class SuperMarket {
             Product product = productCatalogue.get(i);
             if (product.name.equalsIgnoreCase(productName)) {
                 product.amount += amount;
-                System.out.printf("%d %s(s) were restocked! Current stock: %d", amount, product.name, product.amount);
+                System.out.printf("%d %s(s) were restocked! Current stock: %d%n", amount, product.name, product.amount);
                 return;
             }
-            System.out.printf("Could not restock %s because it does not exist in the product catalogue of %s.", productName, name);
+            System.out.printf("Could not restock %s because it does not exist in the product catalogue of %s.%n", productName, name);
         }
     }
 }

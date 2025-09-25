@@ -29,17 +29,16 @@ public class Main {
         var customer = new Customer("Duncan");
 
         while (true) {
-            System.out.println("\nWhat would you like to do?");
+            System.out.println("What would you like to do?");
             System.out.println("1 - Visit a supermarket");
             System.out.println("2 - Buy a product");
             System.out.println("3 - Restock a product");
             System.out.println("4 - Exit");
 
-            int userMenuChoice = scanner.nextInt();
-            scanner.nextLine();
+            String userMenuChoice = scanner.nextLine();
 
             switch (userMenuChoice) {
-                case 1:
+                case "1":
                     System.out.println("Which supermarket would you like to visit?");
                     System.out.println("Typ one of the following:");
 
@@ -51,20 +50,34 @@ public class Main {
                     SuperMarket superMarket = superMarkets.get(superMarketChoice);
 
                     if (superMarket == null) {
-                        System.out.printf("%s does not exist! Please check your spelling and typ in a valid supermarket name.", superMarketChoice);
+                        System.out.printf("%s does not exist! Please check your spelling and typ in a valid supermarket name.%n", superMarketChoice);
                     } else {
                         customer.goToSuperMarket(superMarket);
                     }
 
                     break;
-                case 2:
+                case "2":
+                    if (customer.superMarket == null) {
+                        System.out.println("Please visit a supermarket first before trying to buy a product!");
+                        break;
+                    }
+
+                    System.out.printf("What product would you like to buy from %s?%n", customer.superMarket.name);
+                    String targetProduct = scanner.nextLine();
+
+                    System.out.printf("How many %s(s) would you like to buy?%n", targetProduct);
+                    int targetAmount = scanner.nextInt();
+                    scanner.nextLine();
+
+                    customer.buyItem(targetProduct, targetAmount);
+
                     break;
-                case 3:
+                case "3":
                     break;
-                case 4:
+                case "4":
                     break;
                 default:
-                    System.out.printf("%s is not a valid option! Please pick a valid option.", userMenuChoice);
+                    System.out.printf("%s is not a valid option! Please pick a valid option.%n", userMenuChoice);
                     break;
             }
         }
